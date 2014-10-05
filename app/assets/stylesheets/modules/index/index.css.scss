@@ -29,6 +29,12 @@
   height: 330px;
   margin: 0px auto 5px;
   background-size: cover;
+
+  @include respond-to-max(xs) {
+    width: 100%;
+    height: 240px;
+  }
+
 }
 
 #profilePhoto {
@@ -42,24 +48,33 @@
   margin-left: 17px;
 
   @include respond-to-max(md){
-    width: 230px;
-    height: 230px;
-    margin-top: 117px;
-    margin-left: -275px;
+    margin-top: 85px;
+    margin-left: 17px;
+  }
+
+  @include respond-to-max(xs){
+    margin-top: 0;
+    width: 200px;
+    height: 200px;
   }
 }
 
 #profileFrame {
   position: absolute;
-  top: 0;
+  top: 0px;
   left: 0;
   opacity: 0.6;
 
   @include respond-to-max(md) {
-    left: -150px;
+    top: 15px;
+
     img {
-      width: 85%;
+      width: 90%;
     }
+  }
+
+  @include respond-to-max(xs) {
+    display: none;
   }
 
 }
