@@ -10,12 +10,14 @@ Gavinandcarolene::Application.routes.draw do
 
   #resources admin :guests
   get 'admin/guests/', :to => 'admin/guest_accounts#index', :as => 'guests'
-  get 'admin/guests/:id/profile', :to => 'admin/guest_accounts#show', :as  => 'guests_show'
+  get 'admin/guests/:id/profile', :to => 'admin/guest_accounts#show', :as  => 'guest_show'
+  get 'admin/guests/:id/edit', :to => 'admin/guest_accounts#edit', :as  => 'guest_edit'
   get 'admin/guests/communicate', :to => 'admin/guest_accounts#communicate', :as => 'guests_communicate'
   get 'admin/guests/ajax-get-guests', :to => 'admin/guest_accounts#ajax_get_guests', :as => 'ajax_get_guests'
   post 'admin/guests/send_email', :to => 'admin/guest_accounts#send_email'
   get 'admin/guests/new', :to => 'admin/guest_accounts#new'    , :as => 'guests_new'
   post 'admin/guests/'  , :to => 'admin/guest_accounts#create'
+  patch 'admin/guests/:id/update'  , :to => 'admin/guest_accounts#update', :as => 'guest'
   post 'admin/guests/import'  , :to => 'admin/guest_accounts#import'
 
   #resources :guests

@@ -39,12 +39,21 @@ class Admin::GuestAccountsController < ApplicationController
   end
 
   def edit
-
+    @guest = Guest.find(params[:id])
   end
 
 
   def update
+    @guest = Guest.find(params[:id])
 
+    respond_to do |format|
+        if @guest.update_attributes(guest_params)
+        format.html { redirect_to :action => 'index', notice: 'Guest was successfully updated.' }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @guest.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def import
