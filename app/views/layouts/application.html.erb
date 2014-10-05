@@ -10,9 +10,11 @@
     <%= csrf_meta_tags %>
   </head>
   <body class="<%= @bodyClass %>">
-    <header class="container-fluid">
-      <%= render 'layouts/navigation' %>
-    </header>
+    <% if @userAuthenticated %>
+        <header class="container-fluid">
+            <%= render 'layouts/navigation' %>
+        </header>
+    <% end %>
 
     <main role="main" class="container">
        <%= render 'layouts/messages' %>
