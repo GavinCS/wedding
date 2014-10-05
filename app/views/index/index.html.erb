@@ -1,0 +1,56 @@
+<% unless @host.blank? %>
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h2>
+          <%= @host.groom_name.titleize + ' & ' + @host.bride_name.titleize %>
+        </h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h3>
+          Hazendal Wine Estate, Stellenbosch
+        </h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h3>
+          <%= @host.wedding_date.strftime('%d %B, %Y') %>
+        </h3>
+      </div>
+    </div>
+<% end %>
+
+<div class="row profile-outer">
+  <div class="col-sm-12 text-center ">
+    <div class="profileContainer">
+      <div id="profilePhoto"></div>
+      <div id="profileFrame">
+        <img src="assets/portrait-frame.png">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2 index-note">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        Please bookmark our site. <br>
+        We will be updating it with Useful information.<br>
+                                        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 text-center count-down">
+          <% @dateObject.each_with_index do |d, index| %>
+                <%= d[:count] %>
+                <%= d[:label] %>
+          <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
+

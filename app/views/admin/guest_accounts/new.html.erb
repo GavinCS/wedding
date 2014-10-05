@@ -1,0 +1,51 @@
+<%= form_for @guest, :html => {:class => 'form-horizontal well'} do |f| %>
+    <% if @guest.errors.any? %>
+        <div class="error_explanation">
+          <h2><%= pluralize(@guest.errors.count, "error") %> prohibited this signature from being saved:</h2>
+
+          <ul>
+            <% @guest.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <fieldset>
+      <div class="control-group">
+        <%= f.label :name, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field  :name, :required => true, :autofocus => true, :size => '35' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :partner_name, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.text_field  :partner_name, :size => '35' %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :email, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.email_field :email, :required => true, :size => '35' %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= f.label :pax, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.number_field  :pax, in: 1..2, step: 1, :required => true %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :rsvp, :class => 'control-label' %>
+        <div class="controls">
+          <%= f.check_box :rsvp %>
+        </div>
+      </div>
+    </fieldset>
+    <div class="form-actions">
+      <%= f.submit 'register user', :class => 'btn btn-primary' %>
+    </div>
+
+
+<%	end  %>

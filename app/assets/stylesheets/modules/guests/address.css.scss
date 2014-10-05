@@ -1,0 +1,10 @@
+@import "mixins.css.scss";
+#new_guest_address {
+
+  @include respond-to-max(xs) {
+    input {
+      width: 100%;
+    }
+  }
+
+}

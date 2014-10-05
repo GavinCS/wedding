@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-md-8">
+    <h1>Guests</h1>
+     <div class="row">
+       <div class="col-md-2">
+         <table>
+           <tr>
+             <th>Invited:</th>
+             <td><%= @invitedGuests %></td>
+           </tr>
+           <tr>
+             <th>Accepted:</th>
+             <td><%= @rsvped %></td>
+           </tr>
+           <tr>
+             <th>Pending:</th>
+             <td><%= @noRsvp %></td>
+           </tr>
+         </table>
+       </div>
+     </div>
+  </div>
+  <div class="col-md-2">
+    <%= link_to 'create new guest', "#newGuest", :class => 'btn btn-primary newUserModal', 'data-toggle' => 'modal' %>
+  </div>
+  <div class="col-md-2">
+    <%= link_to 'email guests', guests_communicate_path + '/', :class => 'btn btn-primary'  %>
+  </div>
+
+</div>
+<div class="row">
+    <div class="col-sm-6">
+      <%= form_tag "/admin/guests/import/", multipart: true do %>
+          <%= file_field_tag :file %>
+          <%= submit_tag "Import CSV" %>
+      <% end %>
+    </div>
+</div>
+<table class="table table-striped">
+  <thead>
+      <tr>
+        <th>Guest</th>
+        <th>Partner</th>
+        <th>Kids</th>
+        <th>Email</th>
+        <th>PAX</th>
+        <th>RSVP</th>
+      </tr>
+  </thead>
+  <% @guests.each do |guest| %>
+      <tr>
+        <td><%= guest.name %></td>
+        <td><%= guest.partner_name %></td>
+        <td><%= guest.kids %></td>
+        <td><%= guest.email %></td>
+        <td><%= guest.pax %></td>
+        <td><%= guest.rsvp ? 'Yes' : 'No' %></td>
+      </tr>
+  <% end %>
+</table>
+
+</div>
+

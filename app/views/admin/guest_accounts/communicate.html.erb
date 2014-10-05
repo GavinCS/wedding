@@ -1,0 +1,13 @@
+
+<%= form_tag '/admin/guests/send_email/', :id => 'mailForm', :class => 'form-horizontal', :role => 'form' do %>
+    <%= label_tag 'mail_template', 'Template To Send' %>
+    <%= select_tag 'mail_template', options_from_collection_for_select(@templates, "template", "name"), :prompt => 'Select a template', :onchange => 'template_change()' %>
+    <%= text_field_tag 'subject', nil, placeholder: 'Enter a subject for your email'  %>
+    <%= check_box_tag "check_all" , true, false %>
+    <%= label_tag "check_all", 'select all' %>
+    <ul id="guest_email" class="well">
+
+    </ul>
+
+    <%= submit_tag 'send' %>
+<% end %>
