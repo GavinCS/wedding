@@ -32,7 +32,7 @@
 }
 
 #profilePhoto {
-  background-image:url("profile.jpg");
+  background-image:asset_url("profile.jpg");
   display: inline-block;
   background-size: contain;
   width: 152px;
