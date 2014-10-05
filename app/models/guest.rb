@@ -3,7 +3,7 @@ class Guest < ActiveRecord::Base
   attr_accessor :password
 
   validates :name, :presence => true, :length => { :minimum => 3 }
-  validates :email, :presence => true #, :uniqueness => true
+#  validates :email, :presence => true #, :uniqueness => true
   validates_length_of :password, :in => 6..20, :allow_blank => true, :on => :update
   validates_confirmation_of :password
 

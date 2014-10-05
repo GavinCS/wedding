@@ -7,4 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
     WeddingHost.create(groom_name: 'Gavin Schreiber', bride_name: 'Carolene Brandsen', wedding_date: '2015-03-21')
-  #  MailTemplate.create(name: 'Save the date', description: 'save our wedding date')
+    MailTemplate.create(name: 'Save the date', description: 'save our wedding date')
