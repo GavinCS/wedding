@@ -32,8 +32,8 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  database: gavin_dev
+  database: wedding_production
   pool: 5
-  username: root
-  password:
+  username: dbwedding
+  password: W3dd1NG5
   socket: /tmp/mysql.sock
