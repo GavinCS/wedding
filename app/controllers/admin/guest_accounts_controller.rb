@@ -75,7 +75,7 @@ class Admin::GuestAccountsController < ApplicationController
      mailTemplate = params[:mail_template]
      respond_to do |format|
 
-       @guests = Guest.select('name','email','id').where(mailTemplate + '_mail' => nil)
+       @guests = Guest.select('name','email','id').where(mailTemplate + '_mail' => nil).where.not('email' => nil)
        format.json { render json: @guests }
      end
   end
