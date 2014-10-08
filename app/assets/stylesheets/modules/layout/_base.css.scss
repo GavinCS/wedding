@@ -17,7 +17,7 @@ body {
   }
 
   @include respond-to-max(xs) {
-    background-image: asset_url("background.jpg");
+    background-image: asset_url("background_xs.jpg");
     background-repeat: repeat-y;
     background-size: 200%;
     background-position: 0 0;
