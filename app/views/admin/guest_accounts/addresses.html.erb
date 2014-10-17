@@ -1,0 +1,15 @@
+<ul>
+<% @addresses.each do |address| %>
+      <li>
+    <%= address.guest.name %>  <%= address.guest.partner_name %>
+    <%= address.street_1  %>
+    <%= address.street_2 %>
+    <%= address.suburb %>
+    <%= address.region %>
+    <%= address.country.name %>
+    <%= address.postcode %>
+
+
+      </li>
+<% end %>
+</ul>

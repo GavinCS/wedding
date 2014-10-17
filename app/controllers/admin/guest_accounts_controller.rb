@@ -12,6 +12,11 @@ class Admin::GuestAccountsController < ApplicationController
 
   end
 
+  def addresses
+    @addresses = GuestAddress.joins(:guest)
+
+  end
+
   def show
     @guest = Guest.find(params[:id])
     @guest_address = GuestAddress.find_by_guest_id(@guest.id)
@@ -37,6 +42,7 @@ class Admin::GuestAccountsController < ApplicationController
       end
     end
   end
+
 
   def edit
     @guest = Guest.find(params[:id])
@@ -106,6 +112,36 @@ class Admin::GuestAccountsController < ApplicationController
         format.html { redirect_to :action => 'communicate'}
       end
     end
+  end
+
+  def new_address
+    @address = GuestAddress.new
+    @guests = Guest.all
+  end
+
+  def create_address
+    @address = GuestAddress.new(address_params)
+
+    respond_to do |format|
+      if @address.save
+        format.html { redirect_to new_address_path, :notice => 'Address saved.' }
+      else
+        format.html {redirect_to new_address_path, :notice => 'error.'}
+        format.json { render json: @guest.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def address_params
+    params.require(:guest_address).permit(
+        :guest_id,
+        :street_1,
+        :street_2,
+        :suburb,
+        :postcode,
+        :region,
+        :country_id
+    )
   end
 
   private
