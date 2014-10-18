@@ -116,7 +116,7 @@ class Admin::GuestAccountsController < ApplicationController
 
   def new_address
     @address = GuestAddress.new
-    @guests = Guest.all
+    @guests = Guest.includes(:guest_address).where(guest_addresses: { id: nil })
   end
 
   def create_address
@@ -127,6 +127,24 @@ class Admin::GuestAccountsController < ApplicationController
         format.html { redirect_to new_address_path, :notice => 'Address saved.' }
       else
         format.html {redirect_to new_address_path, :notice => 'error.'}
+        format.json { render json: @guest.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def edit_address
+    @address = GuestAddress.find_by(params[:id])
+    @guest = @address.guest
+  end
+
+  def update_address
+    @address = GuestAddress.find_by(params[:id])
+
+    respond_to do |format|
+      if @address.update_attributes(address_params)
+        format.html { redirect_to addresses_path, notice: 'Guest  address was successfully updated.' }
+      else
+        format.html { render action: 'edit' }
         format.json { render json: @guest.errors, status: :unprocessable_entity }
       end
     end

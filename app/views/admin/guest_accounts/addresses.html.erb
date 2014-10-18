@@ -1,15 +1,38 @@
-<ul>
-<% @addresses.each do |address| %>
-      <li>
-    <%= address.guest.name %>  <%= address.guest.partner_name %>
-    <%= address.street_1  %>
-    <%= address.street_2 %>
-    <%= address.suburb %>
-    <%= address.region %>
-    <%= address.country.name %>
-    <%= address.postcode %>
+<div class="row">
+  <div class="col-md-12">
+    <h1>Addresses</h1>
+  </div>
+  <div class="col-md-2">
+    <%= link_to 'new addresses', new_address_path, :class => 'btn btn-primary'  %>
+  </div>
 
+</div>
 
-      </li>
-<% end %>
-</ul>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Guest</th>
+    <th>Partner</th>
+    <th>Address</th>
+    <th></th>
+  </tr>
+  </thead>
+
+  <% @addresses.each do |address| %>
+        <tr>
+          <td>
+            <%= address.guest.name %>
+          </td>
+          <td>
+            <%= address.guest.partner_name %>
+          </td>
+          <td>
+            <%= address.street_1 + ', ' +  address.street_2 + ', ' +  address.suburb  + ', ' +
+                address.region  + ', ' + address.country.name  + ', ' + address.postcode %>
+          </td>
+          <td>
+            <%= link_to 'edit', edit_address_path(address.id), :class => 'btn btn-primary' %>
+          </td>
+        </tr>
+  <% end %>
+</table>

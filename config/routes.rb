@@ -12,6 +12,7 @@ Gavinandcarolene::Application.routes.draw do
   get 'admin/guests/', :to => 'admin/guest_accounts#index', :as => 'guests'
   get 'admin/guests/addresses', :to => 'admin/guest_accounts#addresses', :as => 'addresses'
   get 'admin/guests/addresses/:id/address', :to => 'admin/guest_accounts#show_address', :as => 'address'
+  get 'admin/guests/addresses/:id/address/edit', :to => 'admin/guest_accounts#edit_address', :as => 'edit_address'
   get 'admin/guests/:id/profile', :to => 'admin/guest_accounts#show', :as  => 'guest_show'
   get 'admin/guests/:id/edit', :to => 'admin/guest_accounts#edit', :as  => 'guest_edit'
   get 'admin/guests/communicate', :to => 'admin/guest_accounts#communicate', :as => 'guests_communicate'
@@ -22,7 +23,8 @@ Gavinandcarolene::Application.routes.draw do
   patch 'admin/guests/:id/update'  , :to => 'admin/guest_accounts#update', :as => 'guest'
   post 'admin/guests/import'  , :to => 'admin/guest_accounts#import'
   get 'admin/guests/address/new', :to => 'admin/guest_accounts#new_address', :as => 'new_address'
-  post 'admin/guests/address/create', :to => 'admin/guest_accounts#create_address'
+  post 'admin/guests/address/save', :to => 'admin/guest_accounts#create_address'
+  patch 'admin/guests/address/save', :to => 'admin/guest_accounts#update_address'
 
 
   #resources :guests
