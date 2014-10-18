@@ -1,52 +1,53 @@
 <div class="row">
   <div class="col-md-8">
     <h1>Guests</h1>
-     <div class="row">
-       <div class="col-md-2">
-         <table>
-           <tr>
-             <th>Invited:</th>
-             <td><%= @invitedGuests %></td>
-           </tr>
-           <tr>
-             <th>Accepted:</th>
-             <td><%= @rsvped %></td>
-           </tr>
-           <tr>
-             <th>Pending:</th>
-             <td><%= @noRsvp %></td>
-           </tr>
-         </table>
-       </div>
-     </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        <table>
+          <tr>
+            <th>Invited:</th>
+            <td><%= @invitedGuests %></td>
+          </tr>
+          <tr>
+            <th>Accepted:</th>
+            <td><%= @rsvped %></td>
+          </tr>
+          <tr>
+            <th>Pending:</th>
+            <td><%= @noRsvp %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
   <div class="col-md-2">
     <%= link_to 'create new guest', "#newGuest", :class => 'btn btn-primary newUserModal', 'data-toggle' => 'modal' %>
   </div>
   <div class="col-md-2">
-    <%= link_to 'email guests', guests_communicate_path, :class => 'btn btn-primary'  %>
+    <%= link_to 'email guests', guests_communicate_path, :class => 'btn btn-primary' %>
   </div>
-
 </div>
 <div class="row">
-    <div class="col-sm-6">
-      <%= form_tag "/admin/guests/import/", multipart: true do %>
-          <%= file_field_tag :file %>
-          <%= submit_tag "Import CSV" %>
-      <% end %>
-    </div>
+  <div class="col-sm-6">
+    <%= form_tag "/admin/guests/import/", multipart: true do %>
+        <%= file_field_tag :file %>
+        <%= submit_tag "Import CSV" %>
+    <% end %>
+  </div>
 </div>
+
 <table class="table table-striped">
   <thead>
-      <tr>
-        <th>Guest</th>
-        <th>Partner</th>
-        <th>Kids</th>
-        <th>Email</th>
-        <th>PAX</th>
-        <th>RSVP</th>
-        <th></th>
-      </tr>
+  <tr>
+    <th>Guest</th>
+    <th>Partner</th>
+    <th>Kids</th>
+    <th>Email</th>
+    <th>PAX</th>
+    <th>RSVP</th>
+    <th></th>
+  </tr>
   </thead>
   <% @guests.each do |guest| %>
       <tr>
@@ -56,10 +57,9 @@
         <td><%= guest.email %></td>
         <td><%= guest.pax %></td>
         <td><%= guest.rsvp ? 'Yes' : 'No' %></td>
-        <td><%= link_to 'edit', guest_edit_path(guest.id), :class => 'btn btn-primary' %></td>
+        <td><%= link_to 'show', guest_show_path(guest.id), :class => 'btn btn-primary' %></td>
+        <td><%= link_to 'edit', guest_edit_path(guest.id), :class => 'btn btn-danger' %></td>
       </tr>
   <% end %>
 </table>
-
-</div>
 

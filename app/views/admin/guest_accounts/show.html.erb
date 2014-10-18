@@ -1,0 +1,16 @@
+<h2>
+  <% unless @guest.partner_name.blank? %>
+    <%= @guest.name + ' & ' + @guest.partner_name %>
+  <% else %>
+    <%= @guest.name %>
+  <% end %>
+
+</h2>
+
+<ul>
+  <li><%= @guest_address.street_1 %></li>
+  <li><%= @guest_address.street_2 %></li>
+  <li><%= @guest_address.suburb %></li>
+  <li><%= @guest_address.country.name %></li>
+  <li><%= @guest_address.postcode %></li>
+</ul>

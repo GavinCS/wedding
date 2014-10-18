@@ -20,8 +20,7 @@ class Admin::GuestAccountsController < ApplicationController
   def show
     @guest = Guest.find(params[:id])
     @guest_address = GuestAddress.find_by_guest_id(@guest.id)
-    @guest_country = Country.find(@guest_address.country_id)
-    puts @guest_address
+
   end
 
   def new
