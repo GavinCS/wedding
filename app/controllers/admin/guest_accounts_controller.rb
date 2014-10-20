@@ -132,7 +132,7 @@ class Admin::GuestAccountsController < ApplicationController
   end
 
   def edit_address
-    @address = GuestAddress.find_by(params[:id])
+    @address = GuestAddress.find(params[:id])
     @guest = @address.guest
   end
 
