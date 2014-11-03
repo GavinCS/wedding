@@ -11,6 +11,9 @@ gem 'simple_form'
 gem 'mini_magick'
 gem 'jquery-rails'
 gem 'twitter'
+gem 'geocoder'
+gem 'gmaps4rails'
+gem 'lodash-rails' , '~> 2.4.1'
 
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
@@ -25,6 +28,7 @@ end
 
 group :development, :test do
   gem 'rails_layout'
+  gem 'nifty-generators'
   gem 'letter_opener', '~> 1.2.0'
   gem 'rspec-rails'   , '~> 3.0.0.beta'
   gem 'guard-rspec'
@@ -32,7 +36,6 @@ group :development, :test do
   gem 'capybara', '2.2.1'
   gem 'factory_girl_rails'
   gem 'faker'
-
   gem 'capistrano-rails',   '~> 1.1', require: false
   gem 'capistrano-bundler', '~> 1.1', require: false
 end
@@ -53,3 +56,5 @@ end
 
 # Use Capistrano for deployment
 gem 'capistrano', '~> 3.0', require: false,  group: :development
+
+gem "mocha", group: :test

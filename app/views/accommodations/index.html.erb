@@ -1,0 +1,15 @@
+<% @accommodations.each_slice(3) do |slice| %>
+    <div class="row accommodation">
+      <% slice.each do |acc| %>
+          <div class="col-sm-4">
+            <a data-no-turbolink class="acc-index" href="<%= accommodation_path(acc) %>">
+                <%= image_tag(acc.image.thumb.url) %>
+              <ul class="text-center">
+                <li><%= acc.name %></li>
+                <li><%= acc.address %></li>
+              </ul>
+            </a>
+          </div>
+      <% end %>
+    </div>
+<% end %>

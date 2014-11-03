@@ -1,5 +1,7 @@
 hello ther this is your dashboard
-
-<% @kids.each do |kid| %>
-      <%= kid %>
+     <%= guests_accomodations_path %>
+<% unless @kids.blank? %>
+    <% @kids.each do |kid| %>
+        <%= kid %>
+    <% end %>
 <% end %>

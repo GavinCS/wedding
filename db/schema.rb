@@ -11,13 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140910201903) do
+ActiveRecord::Schema.define(version: 20141025085257) do
+
+  create_table "accommodations", force: true do |t|
+    t.string   "name"
+    t.string   "contact_number"
+    t.string   "email"
+    t.string   "website"
+    t.string   "image"
+    t.string   "address"
+    t.string   "latitude"
+    t.string   "longitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "countries", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "galleries", force: true do |t|
+    t.string   "album_name"
+    t.integer  "image_count",      default: 0
+    t.boolean  "hide_from_public", default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "galleries", ["album_name"], name: "index_galleries_on_album_name", using: :btree
 
   create_table "guest_addresses", force: true do |t|
     t.integer  "guest_id"
@@ -49,6 +72,16 @@ ActiveRecord::Schema.define(version: 20140910201903) do
   end
 
   add_index "guests", ["email"], name: "index_guests_on_email", using: :btree
+
+  create_table "images", force: true do |t|
+    t.string   "images"
+    t.string   "image_name"
+    t.integer  "gallery_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "images", ["image_name"], name: "index_images_on_image_name", using: :btree
 
   create_table "mail_templates", force: true do |t|
     t.string   "name"

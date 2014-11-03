@@ -10,8 +10,9 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-
-
+    <div class="visible-xs navbar-mobile">
+      <%= render 'layouts/index_navigation' %>
+    </div>
     <main role="main" class="container index-page">
        <%= render 'layouts/messages' %>
 
