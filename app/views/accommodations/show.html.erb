@@ -11,7 +11,7 @@
     <%= image_tag(@accommodation.image.url) %>
     <ul>
       <li><strong>Name: </strong><%= @accommodation.name %></li>
-      <li><strong>Website: </strong><%= @accommodation.website %></li>
+      <li><strong>Website: </strong><%= link_to @accommodation.website, @accommodation.website, :'data-no-turbolink' => '', :target => '_blank' %></li>
       <li><strong>Email: </strong><a href="mailto:<%= @accommodation.email %>"><%= @accommodation.email %></li></a>
       <li><strong>Phone: </strong><%= @accommodation.contact_number %></li>
       <li><strong>Address:</strong> <%= @accommodation.address %></li>
