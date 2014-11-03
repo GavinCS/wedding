@@ -92,3 +92,69 @@
      border-top-color: $offBlack;
   }
 }
+
+.navbar-public {
+  border-radius: 0;
+
+  @include respond-to(sm) {
+
+    .navbar-collapse {
+      margin-left: 20%;
+    }
+
+    .navbar-nav {
+      border-bottom: 1px solid gray;
+
+      li {
+        border-bottom: 2px solid gray;
+        padding: 0 4px;
+
+        a {
+          color: #777777;
+
+          &:hover {
+           color: black;
+          }
+        }
+
+        &:hover {
+          border-bottom-color: black;
+        }
+      }
+    }
+
+  }
+}
+
+.navbar-mobile {
+  .navbar-public {
+    @include respond-to-max(xs) {
+      background-color: white;
+      border-color: #090909;
+
+      .navbar-nav {
+        li a {
+          color: #777777;
+          &:hover {
+            color: black;
+          }
+        }
+      }
+
+      .navbar-collapse {
+        border-color: #101010;
+      }
+
+      .navbar-toggle {
+        border-color: #333333;
+        .icon-bar {
+          background-color: gray;
+        }
+
+        &:hover, &:focus{
+          background-color: $greyMiddle;
+        }
+      }
+    }
+  }
+}

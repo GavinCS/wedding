@@ -1,11 +1,18 @@
 Gavinandcarolene::Application.routes.draw do
 
   resources :index
-  get "admin", :to   => 'admin/admin#index', :as => 'admin'
-  get "admin/:id/show"    => 'admin/admin#show'
-  get "admin/users/edit"    => 'admin/admin#edit'
-  get "admin/users/new"    => 'admin/admin#new'
-  get 'admin/sign_in' => 'admin/admin#sign_in'
+  namespace :admin do
+
+    get "index", :to   => 'admin#index'
+    get ":id/show"    => 'admin#show'
+    get "users/edit"    => 'admin#edit'
+    get "users/new"    => 'admin#new'
+    get 'sign_in' => 'admin#sign_in'
+
+    resources :accommodations
+    resources :guest_addresses
+    root 'admin#index'
+  end
 
 
   #resources admin :guests
@@ -27,7 +34,6 @@ Gavinandcarolene::Application.routes.draw do
   patch 'admin/guests/address/save', :to => 'admin/guest_accounts#update_address'
 
 
-  #resources :guests
   get 'guests/:id/register', :to => 'guests#register', :as  => 'guests_register'
   get 'guests/:id/rsvp', :to => 'guests#rsvp', :as  => 'guests_rsvp'
   post 'guests/save-address', :to => 'guests#saveAddress'
@@ -36,7 +42,11 @@ Gavinandcarolene::Application.routes.draw do
   get 'guests/:id/dashboard', :to => 'guests#dashboard', :as  => 'guests_dashboard'
 
 
-  resources :guest_addresses
+  #resources :guests
+  namespace :guests do
+  end
+
+  resources :accommodations
 
   # session control
   post "sessions/new_admin"
@@ -96,8 +106,8 @@ Gavinandcarolene::Application.routes.draw do
 
   # Example resource route within a namespace:
   #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
+  #     # Directs /products/* to Admin::ProductsController
+  #     # (app/controllers/products_controller.rb)
   #     resources :products
   #   end
 end

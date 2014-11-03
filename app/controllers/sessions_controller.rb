@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       session[:user_name] = authorized_user.name
       flash[:notice] = "Hey there #{authorized_user.name}"
       # record_activity("Logged in")
-      redirect_to(:controller => 'admin/admin', :action => 'index')
+      redirect_back_or_default('/admin/index/')
     else
       flash[:error] = "Invalid email/password combination."
       redirect_to(:controller => 'admin/admin', :action => 'sign_in')
@@ -50,3 +50,18 @@ end
 
 private
 
+
+def redirect_back_or_default(default)
+  redirect_to(session[:return_to] || default)
+  session[:return_to] = nil
+end
+
+
+#def redirect_to_back(default = root_url)
+#  if !request.env["HTTP_REFERER"].blank? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
+#    redirect_to :back
+#  else
+#    redirect_to default
+#  end
+#
+#end

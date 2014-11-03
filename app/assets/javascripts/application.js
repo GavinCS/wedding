@@ -11,7 +11,10 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
 //= require turbolinks
+//= require jquery_ujs
 //= require bootstrap
+//= require lodash
+//= require gmaps/google
+//= require_self
 //= require_tree .

@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-sm-12 text-right" style="margin-bottom: 15px;">
+    <%= link_to "Back", accommodations_path, :class => 'btn btn-default' %>
+
+    <%= link_to "Prev", @accommodation.previous, :class => @accommodation.previous ? 'btn btn-default' : 'btn btn-default disabled' , :'data-no-turbolink' => '' %>
+    <%= link_to "Next", @accommodation.next, :class => @accommodation.next ? 'btn btn-default' : 'btn btn-default disabled', :'data-no-turbolink' => '' %>
+  </div>
+</div>
+<div class="row accommodation">
+  <div class="col-sm-6">
+    <ul>
+      <li><strong>Name: </strong><%= @accommodation.name %></li>
+      <li><strong>Email: </strong><a href="mailto:<%= @accommodation.email %>"><%= @accommodation.email %></li></a>
+      <li><strong>Phone: </strong><%= @accommodation.contact_number %></li>
+      <li><strong>Address:</strong> <%= @accommodation.address %></li>
+    </ul>
+  </div>
+  <div class="col-sm-6">
+      <div id="map" class="acc-map-single" data-marker-image='<%= @image %>' data-marker='<%=raw @marker.to_json %>'></div>
+  </div>
+</div>

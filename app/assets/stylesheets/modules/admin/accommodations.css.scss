@@ -1,0 +1,36 @@
+/*
+  Place all the styles related to the matching controller here.
+  They will automatically be included in application.css.
+*/
+
+.accommodation {
+  .acc-index {
+    background-color: white;
+    display: block;
+    color: black;
+
+    &:hover {
+      color: darkblue;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+  ul {
+    list-style-type: none;
+  }
+}
+
+.acc-map-single {
+  width: 100%;
+  height: 555px;
+
+  @include respond-to-max(md) {
+    height: 455px;
+  }
+
+  @include respond-to-max(sm) {
+    height: 345px;
+  }
+}

@@ -1,0 +1,25 @@
+<table class="table table-striped">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Address</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% for accommodation in @accommodations %>
+    <tr>
+      <td><%= accommodation.name %></td>
+      <td><%= accommodation.email %></td>
+      <td><%= accommodation.contact_number %></td>
+      <td><%= accommodation.address %></td>
+
+      <td><%= link_to "Show", admin_accommodation_path(accommodation) %></td>
+      <td><%= link_to "Edit", edit_admin_accommodation_path(accommodation) %></td>
+      <td><%= link_to "Destroy", admin_accommodation_path(accommodation), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Accommodation", new_admin_accommodation_path %></p>

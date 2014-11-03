@@ -9,14 +9,16 @@ class ApplicationController < ActionController::Base
 
   def confirm_admin_logged_in
     unless session[:user_id]
+      self::store_location
       flash[:notice] = "Please log in."
-      redirect_to(:controller => 'admin/admin', :action => 'sign_in')
+      redirect_to(:controller => 'admin', :action => 'sign_in')
       return false # halts the before_filter
     else
       unless session[:last_seen] > 100.minutes.ago
         reset_session
+        self::store_location
         flash[:notice] = "session expired please log in."
-        redirect_to(:controller => 'admin/admin', :action => 'sign_in')
+        redirect_to(:controller => 'admin', :action => 'sign_in')
         return false # halts the before_filter
       else
         @userAuthenticated  = User.find(session[:user_id])
@@ -66,10 +68,15 @@ class ApplicationController < ActionController::Base
 
   def set_body_class
     @bodyClass = ''
-    if controller_name == 'admin' || controller_name == 'guest_accounts'
+    if self.class.parent == Admin
       @bodyClass = 'admin-body'
     end
   end
 
-
+  def store_location
+    !request.env["HTTP_REFERER"].blank? and  request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]
+    session[:return_to] =  request.env["HTTP_REFERER"]
+    else
+      session[:return_to] =  request.env["REQUEST_URI"]
+  end
 end

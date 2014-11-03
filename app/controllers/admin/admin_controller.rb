@@ -8,7 +8,7 @@ class Admin::AdminController < ApplicationController
 
   def sign_in
     if current_admin_user
-      redirect_to users_index_path
+      redirect_to admin_index_path
     end
   end
 
