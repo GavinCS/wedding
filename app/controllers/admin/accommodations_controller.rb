@@ -48,7 +48,7 @@ class Admin::AccommodationsController < ApplicationController
 
 
   def accommodation_params
-    params.require(:accommodation).permit(:name,:email,:contact_number,:image, :address, :latitude ,:longitude)
+    params.require(:accommodation).permit(:name, :website, :email,:contact_number,:image, :address, :latitude ,:longitude)
   end
 
 end
